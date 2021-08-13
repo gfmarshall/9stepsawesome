@@ -1,5 +1,6 @@
 = Step 0: Quickstart
-Burr Sutter <burrsuter@gmail.com>
+Thanks to Burr Sutter <burrsuter@gmail.com>
+Gary Marshall <gary@redboss.com.au>
 
 === Resources
 https://kubernetes.io/docs/user-guide/kubectl/
@@ -15,7 +16,7 @@ cd ~/11steps
 
 === git clone materials
 ----
-git clone https://github.com/burrsutter/9stepsawesome
+git clone https://github.com/gfmarshall/9stepsawesome
 ----
 
 === Make a directory for executables
@@ -29,13 +30,16 @@ cd bin
 Some lines are Mac OS based, but if you are on Linux, change `darwin` to `linux`.
 
 ----
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.7.2/minikube-darwin-amd64
+#curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.7.2/minikube-darwin-amd64
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
 chmod +x minikube
 
 ./minikube version
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/darwin/amd64/kubectl 
+#curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/darwin/amd64/kubectl 
+#curl -LO https://storage.googleapis.com/kubernetes-release/release/latest/bin/linux/amd64/kubectl 
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
 
 chmod +x kubectl
 
@@ -44,7 +48,8 @@ cd ..
 
 === Set Environment Variables
 ----
-export MINIKUBE_HOME=/Users/burrsutter/11steps;
+#export MINIKUBE_HOME=/Users/burrsutter/11steps;
+export MINIKUBE_HOME=/home/gary/11steps;
 export PATH=$MINIKUBE_HOME/bin:$PATH
 export KUBECONFIG=$MINIKUBE_HOME/.kube/config
 export KUBE_EDITOR="code -w"
